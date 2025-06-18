@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joy Pet Store</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -33,17 +34,17 @@
                 <h2>Featured Pets Available for Adoption</h2>
                 
                 <div class="pet-carousel">
-                    <button class="carousel-btn" onclick="previousPet()">❮</button>
+                    <button class="carousel-btn prev">❮</button>
                     <div class="pet-card" id="currentPet">
                         <img src="img/dogs/dog01.jpg" alt="Pet" id="petImage">
                         <div class="pet-info">
                             <h3 id="petName">Buddy</h3>
                             <p id="petBreed">Golden Retriever</p>
                             <p id="petAge">Age: 3 years</p>
-                            <button class="adopt-btn" onclick="adoptPet()">Adopt Now</button>
+                            <button class="adopt-btn">Adopt Now</button>
                         </div>
                     </div>
-                    <button class="carousel-btn" onclick="nextPet()">❯</button>
+                    <button class="carousel-btn next">❯</button>
                 </div>
                 
                 <div class="pet-grid">
@@ -53,7 +54,7 @@
                             <h3>Whiskers</h3>
                             <p>Persian Cat</p>
                             <p>Age: 2 years</p>
-                            <button class="adopt-btn" onclick="adoptPet()">Adopt Now</button>
+                            <button class="adopt-btn">Adopt Now</button>
                         </div>
                     </div>
                     <div class="pet-card">
@@ -62,7 +63,7 @@
                             <h3>Charlie</h3>
                             <p>Parrot</p>
                             <p>Age: 5 years</p>
-                            <button class="adopt-btn" onclick="adoptPet()">Adopt Now</button>
+                            <button class="adopt-btn">Adopt Now</button>
                         </div>
                     </div>
                 </div>
