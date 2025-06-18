@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Pets - Joy Pet Store</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -24,6 +25,15 @@
         <div class="container">
             <section id="pet-list-section">
                 <h2>All Our Pets</h2>
+                <div class="filter-container">
+                    <span>Type:</span>
+                    <div class="checkbox-group">
+                        <div><input type="checkbox" id="type-dogs" name="pet-type" value="Dog" checked/> <label for="type-dogs">Dogs</label></div>
+                        <div><input type="checkbox" id="type-cats" name="pet-type" value="Cat" checked/> <label for="type-cats">Cats</label></div>
+                        <div><input type="checkbox" id="type-capybaras" name="pet-type" value="Capybara" checked/> <label for="type-capybaras">Capybaras</label></div>
+                        <div><input type="checkbox" id="type-birds" name="pet-type" value="Bird" checked/> <label for="type-birds">Birds</label></div>
+                    </div>
+                </div>
                 <div id="pet-list">
                 </div>
             </section>

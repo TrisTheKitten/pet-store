@@ -16,23 +16,36 @@ function adoptPet() {
 }
 
 function loadPets() {
-  console.log('Loading pets...');
-  const petList = document.getElementById('pet-list');
-  if (!petList) return;
+  const petList = $('#pet-list');
+  if (!petList.length) return;
 
-  pets.forEach(pet => {
-    const petItem = document.createElement('div');
-    petItem.className = 'pet';
-    petItem.innerHTML = `
-      <img src="${pet.img}" alt="${pet.name}">
-      <h3>${pet.name}</h3>
-      <p>Type: ${pet.type}</p>
-      <p>Age: ${pet.age} years</p>
-      <button class="adopt-btn" onclick="adoptPet()">Adopt Now</button>
+  petList.empty();
+
+  const selectedTypes = $('input[name="pet-type"]:checked').map(function() {
+    return $(this).val();
+  }).get();
+
+  const filteredPets = pets.filter(pet => selectedTypes.includes(pet.type));
+
+  filteredPets.forEach(pet => {
+    const petItem = `
+      <div class="pet">
+        <img src="${pet.img}" alt="${pet.name}">
+        <h3>${pet.name}</h3>
+        <p>Type: ${pet.type}</p>
+        <p>Age: ${pet.age} years</p>
+        <button class="adopt-btn">Adopt Now</button>
+      </div>
     `;
-    petList.appendChild(petItem);
+    petList.append(petItem);
   });
-  console.log('Pets loaded successfully.');
 }
 
-document.addEventListener('DOMContentLoaded', loadPets); 
+$(document).ready(function() {
+  if ($('#pet-list').length) {
+    loadPets();
+
+    $('input[name="pet-type"]').on('change', loadPets);
+    $('#pet-list').on('click', '.adopt-btn', adoptPet);
+  }
+}); 

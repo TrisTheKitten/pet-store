@@ -1,27 +1,11 @@
 let currentPetIndex = 0;
 
-function showAlert() {
-    alert("Welcome to Joy Pet Store! Please visit our store or call (555) 123-PETS to learn more about adoption!");
-}
-
-function adoptPet() {
-    alert("Thank you for your interest in adoption! We'll contact you soon to discuss the next steps.");
-}
-
 function displayCurrentPet() {
     const currentPet = pets[currentPetIndex];
-    const petImage = document.getElementById('petImage');
-    const petName = document.getElementById('petName');
-    const petBreed = document.getElementById('petBreed');
-    const petAge = document.getElementById('petAge');
-
-    if (petImage && petName && petBreed && petAge) {
-        petImage.src = currentPet.img;
-        petImage.alt = currentPet.name;
-        petName.textContent = currentPet.name;
-        petBreed.textContent = currentPet.type;
-        petAge.textContent = `Age: ${currentPet.age} years`;
-    }
+    $('#petImage').attr('src', currentPet.img).attr('alt', currentPet.name);
+    $('#petName').text(currentPet.name);
+    $('#petBreed').text(currentPet.type);
+    $('#petAge').text(`Age: ${currentPet.age} years`);
 }
 
 function nextPet() {
@@ -34,19 +18,20 @@ function previousPet() {
     displayCurrentPet();
 }
 
-function smoothScroll(event) {
-    event.preventDefault();
-    const targetId = event.currentTarget.getAttribute("href");
-    document.querySelector(targetId).scrollIntoView({
-        behavior: "smooth"
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    displayCurrentPet();
-
-    const contactLink = document.querySelector('a[href="#contact"]');
-    if (contactLink) {
-        contactLink.addEventListener('click', smoothScroll);
+$(document).ready(function() {
+    if ($('#petImage').length) {
+        displayCurrentPet();
     }
+
+    $('.carousel-btn.next').on('click', nextPet);
+    $('.carousel-btn.prev').on('click', previousPet);
+
+    $('a[href="#contact"]').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+            scrollTop: $($(this).attr('href')).offset().top
+        }, 500);
+    });
+    $('#currentPet').on('click', '.adopt-btn', adoptPet);
+    $('.pet-grid').on('click', '.adopt-btn', adoptPet);
 }); 

@@ -259,6 +259,51 @@ footer h3 {
     margin: 1rem 0 0.5rem;
 }
 
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 24px;
+}
+
+.checkbox-group div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4ecdc4;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    top: -2px;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: #4ecdc4;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '✔';
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
